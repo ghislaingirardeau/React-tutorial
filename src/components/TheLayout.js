@@ -15,6 +15,9 @@ function Banner() {
         <Link className="mx-4 nav-link-bar" to="/survey">
           survey
         </Link>
+        <Link className="mx-4 nav-link-bar" to="/faq/123">
+          faq
+        </Link>
       </div>
 
       <Outlet />

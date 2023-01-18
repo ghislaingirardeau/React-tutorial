@@ -5,7 +5,7 @@ function About() {
   return (
     <div className="App">
       <div>
-        <h1>Ma page about {id}</h1>
+        <h1>Here is the faq number {id}</h1>
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 import "../styles/cart.css";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
-function Cart({ cart, isOpen, setIsOpen, updateCart }) {
+function Cart({ cart, isOpen, setIsOpen, updateCart, test }) {
+  console.log(test);
+
   const total =
     cart.length > 0
       ? cart.reduce(
@@ -43,5 +46,15 @@ function Cart({ cart, isOpen, setIsOpen, updateCart }) {
     </div>
   );
 }
+
+Cart.propTypes = {
+  cart: PropTypes.array,
+  isOpen: PropTypes.bool,
+  setIsOpen: PropTypes.func,
+  updateCart: PropTypes.func,
+};
+Cart.defaultProps = {
+  test: "my default props",
+};
 
 export default Cart;

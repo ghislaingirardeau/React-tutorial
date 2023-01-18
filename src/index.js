@@ -7,7 +7,7 @@ import TheLayout from "./components/TheLayout";
 import Home from "./page/App.jsx";
 import ErrorPage from "./page/Error-page.jsx";
 import Survey from "./page/Survey.jsx";
-import About from "./page/About.jsx";
+import Faq from "./page/Faq.jsx";
 
 import reportWebVitals from "./reportWebVitals";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -28,7 +28,11 @@ const router = createBrowserRouter([
       },
       {
         path: "survey/:id",
-        element: <About />,
+        element: <Faq />,
+      },
+      {
+        path: "/faq/:id",
+        element: <Faq />,
       },
     ],
   },

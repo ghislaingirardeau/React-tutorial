@@ -1,6 +1,11 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npx create-react-app my-app = creer une appli react
+npm add react-router-dom = ajout du router
+npm add prop-types = pour assurer le controle des props => all the type https://fr.reactjs.org/docs/typechecking-with-proptypes.html#proptypes
+npm install react-bootstrap bootstrap = react bootstrap
+
+npm add styled-components = pour lier le css avec le js directement dans le fichier
 
 ## Available Scripts
 
