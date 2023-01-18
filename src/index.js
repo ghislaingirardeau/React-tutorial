@@ -1,13 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "./styles/index.css";
+import Banner from "./components/Banner";
+import Home from "./page/App.jsx";
+import ErrorPage from "./page/Error-page.jsx";
+import Survey from "./page/Survey.jsx";
+
+import reportWebVitals from "./reportWebVitals";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Banner />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/survey" element={<Survey />} />
+        <Route path="/survey/:number" element={<Survey />} />
+        <Route element={<ErrorPage />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

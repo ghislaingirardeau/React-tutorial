@@ -1,0 +1,23 @@
+.App-banner {
+  background-color: #18ade3;
+  color: #b48504;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-banner > img {
+  width: 100px;
+}
+
+.nav-link-bar {
+  text-decoration: none;
+  color: rgb(57, 56, 56);
+  font-size: 20px;
+}
+
+.nav-link-bar:hover {
+  border-bottom: 2px solid #b48504;
+}

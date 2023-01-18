@@ -1,0 +1,16 @@
+.plant-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.plant-cards {
+  margin: 10px;
+  border: 2px solid grey;
+  width: 300px;
+}
+
+.lmj-logo {
+  width: 180px;
+}
