@@ -1,7 +1,6 @@
 import "../styles/App.css";
 import Cart from "../components/Cart";
 import ShoppingList from "../components/ShoppingList";
-import QuestionForm from "../components/QuestionForm";
 import Modal from "../components/Modal";
 
 import { useState } from "react";
@@ -9,7 +8,7 @@ import { useState } from "react";
 function App() {
   const [cart, updateCart] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState({}); // for the modal
 
   return (
     <div className="App">
@@ -25,7 +24,6 @@ function App() {
         setIsOpen={setIsOpen}
         setShow={setShow}
       />
-      <QuestionForm />
       <Modal show={show} setShow={setShow} />
     </div>
   );

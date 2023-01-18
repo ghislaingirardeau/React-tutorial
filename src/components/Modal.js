@@ -1,32 +1,36 @@
+import PropTypes from "prop-types";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function panierModal({ show, setShow }) {
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow({});
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={Object.keys(show).length > 0 ? true : false}
+        onHide={handleClose}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Information</Modal.Title>
+          <Modal.Title>{show.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>This plant has been add to the basket</Modal.Body>
+        <Modal.Body>
+          <img src={show.img} alt="La maison jungle" />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 }
+
+panierModal.propTypes = {
+  show: PropTypes.object,
+  setShow: PropTypes.func,
+};
 
 export default panierModal;

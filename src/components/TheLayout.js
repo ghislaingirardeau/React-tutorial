@@ -1,9 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 
 import "../styles/layout.css";
 import logo from "../assets/leaf+1.png";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
-function Banner() {
+const getCartItems = JSON.parse(localStorage.getItem("react-Eco-app"));
+const quantities = getCartItems
+  ? getCartItems.reduce((accumulator, item) => accumulator + item.quantity, 0)
+  : 0;
+
+function Layout() {
   return (
     <div>
       <div className="App-banner">
@@ -18,6 +25,12 @@ function Banner() {
         <Link className="mx-4 nav-link-bar" to="/faq/123">
           faq
         </Link>
+        <div>
+          <MdOutlineShoppingCart className="shopcart-icon" />
+          <Badge pill bg="warning">
+            {quantities}
+          </Badge>
+        </div>
       </div>
 
       <Outlet />
@@ -33,4 +46,4 @@ function Banner() {
   );
 }
 
-export default Banner;
+export default Layout;

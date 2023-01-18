@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+
 import CareScale from "./CareScale";
 import "../styles/plantCard.css";
 import photo from "../assets/leaf+1.png";
@@ -65,12 +68,12 @@ const plantList = [
   },
 ];
 
-const handleClick = (arg) => {
-  console.log(arg);
-};
-
 // condition : mettre null si on ne veut rien afficher dans le ou
 function ShoppingList({ cart, updateCart, setIsOpen, setShow }) {
+  const showModalImg = (img, name) => {
+    setShow({ img, name });
+  };
+
   const isBestSale = (params) => {
     if (params) {
       return <span>🔥</span>;
@@ -78,9 +81,10 @@ function ShoppingList({ cart, updateCart, setIsOpen, setShow }) {
       return <span>👎</span>;
     }
   };
+
   const addToCart = (id, name, price) => {
     setIsOpen(true);
-    setShow(true);
+
     const plantAdded = cart.filter((element) => id === element.id);
     if (plantAdded.length === 0) {
       updateCart([...cart, { id, price, name, quantity: 1 }]);
@@ -92,6 +96,7 @@ function ShoppingList({ cart, updateCart, setIsOpen, setShow }) {
       ]);
     }
   };
+
   return (
     <div className="plant-container">
       {plantList.map((plant, index) => (
@@ -102,21 +107,33 @@ function ShoppingList({ cart, updateCart, setIsOpen, setShow }) {
             alt="La maison jungle"
             className="lmj-logo"
             onClick={() => {
-              handleClick(plant.name);
+              showModalImg(plant.img, plant.name);
             }}
           />
           <p>{isBestSale(plant.isBestSale)}</p>
-          <span>{plant.price}</span>
+          <span>Price: {plant.price}€</span>
           <CareScale careType="water" scaleValue={plant.water} />
           {/* // pass props inside components */}
           <CareScale careType="light" scaleValue={plant.light} />
-          <button onClick={() => addToCart(plant.id, plant.name, plant.price)}>
-            Ajouter
-          </button>
+
+          <Button
+            variant="primary"
+            onClick={() => addToCart(plant.id, plant.name, plant.price)}
+          >
+            Add
+          </Button>
         </div>
       ))}
     </div>
   );
 }
+
+//cart, updateCart, setIsOpen, setShow
+ShoppingList.propTypes = {
+  setIsOpen: PropTypes.func,
+  setShow: PropTypes.func,
+  cart: PropTypes.array,
+  updateCart: PropTypes.func,
+};
 
 export default ShoppingList;

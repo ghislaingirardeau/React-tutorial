@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import styled from "styled-components";
 import colors from "../utils/style/colors";
+import QuestionForm from "../components/QuestionForm";
 
 const Balloon = styled.div`
   width: 100px;
@@ -17,7 +18,7 @@ const Balloon = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h3`
   font-size: 1.5em;
   text-align: center;
   color: palevioletred;
@@ -37,6 +38,7 @@ function Survey() {
         </Link>
         <Title>style component</Title>
         <Balloon size={size} onClick={() => setSize(size + 0.1)} />
+        <QuestionForm />
       </div>
     </div>
   );

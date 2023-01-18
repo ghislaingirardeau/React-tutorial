@@ -11,6 +11,10 @@
 .App-banner > img {
   width: 100px;
 }
+.shopcart-icon {
+  font-size: 38px;
+  color: rgb(90, 89, 89);
+}
 
 .nav-link-bar {
   text-decoration: none;

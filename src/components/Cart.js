@@ -2,6 +2,8 @@ import "../styles/cart.css";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
+import { FaPaypal } from "react-icons/fa";
+
 function Cart({ cart, isOpen, setIsOpen, updateCart, test }) {
   console.log(test);
 
@@ -13,6 +15,9 @@ function Cart({ cart, isOpen, setIsOpen, updateCart, test }) {
         )
       : 0;
 
+  const saveCartLocaly = () => {
+    localStorage.setItem("react-Eco-app", JSON.stringify(cart));
+  };
   // POUR LE 1ER RENDU : ex appel API
   /* useEffect(() => {
     document.title = `LMJ: ${total}€ d'achats`;
@@ -31,7 +36,9 @@ function Cart({ cart, isOpen, setIsOpen, updateCart, test }) {
   return isOpen ? (
     <div className="lmj-cart">
       <button onClick={() => setIsOpen(false)}>Fermer</button>
-      <h2>Panier</h2>
+      <h2>
+        Panier <FaPaypal />
+      </h2>
       {cart.map(({ id, name, price, quantity }) => (
         <div key={id}>
           name: {name}, price: {price}, quantity: {quantity}
@@ -39,6 +46,9 @@ function Cart({ cart, isOpen, setIsOpen, updateCart, test }) {
       ))}
       <h3>Total : {total}€</h3>
       <button onClick={() => updateCart([])}>Vider panier</button>
+      <button onClick={saveCartLocaly} className="mx-2">
+        Save
+      </button>
     </div>
   ) : (
     <div>
