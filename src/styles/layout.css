@@ -21,3 +21,7 @@
 .nav-link-bar:hover {
   border-bottom: 2px solid #b48504;
 }
+
+.App-footer {
+  background-color: #b48504;
+}

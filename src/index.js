@@ -1,28 +1,44 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./styles/index.css";
-import Banner from "./components/Banner";
+import TheLayout from "./components/TheLayout";
 import Home from "./page/App.jsx";
 import ErrorPage from "./page/Error-page.jsx";
 import Survey from "./page/Survey.jsx";
+import About from "./page/About.jsx";
 
 import reportWebVitals from "./reportWebVitals";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <TheLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "survey/",
+        element: <Survey />,
+      },
+      {
+        path: "survey/:id",
+        element: <About />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Banner />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/survey" element={<Survey />} />
-        <Route path="/survey/:number" element={<Survey />} />
-        <Route element={<ErrorPage />} />
-      </Routes>
-    </Router>
+    {/* <Banner /> */}
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
