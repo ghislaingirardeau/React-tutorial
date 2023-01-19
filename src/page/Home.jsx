@@ -3,8 +3,12 @@ import Cart from "../components/Cart";
 import ShoppingList from "../components/ShoppingList";
 import Modal from "../components/Modal";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
+
+export function sum(a, b) {
+  return a + b;
+}
 
 function App() {
   const [cart, updateCart] = useState([]);
@@ -13,8 +17,18 @@ function App() {
   const test = useOutletContext();
   console.log(test);
 
+  // add a scroll on mount
+  function ScrollToTopOnMount() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+    return null;
+  }
+
   return (
     <div className="App">
+      <ScrollToTopOnMount />
       <Cart
         cart={cart}
         updateCart={updateCart}

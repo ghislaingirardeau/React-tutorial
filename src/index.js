@@ -7,6 +7,7 @@ import TheLayout from "./components/TheLayout";
 import Home from "./page/Home.jsx";
 import ErrorPage from "./page/Error-page.jsx";
 import Survey from "./page/Survey.jsx";
+import RouterDataPass from "./page/routerDataPass.jsx";
 import Faq from "./page/Faq.jsx";
 
 import reportWebVitals from "./reportWebVitals";
@@ -24,7 +25,27 @@ const router = createBrowserRouter([
       },
       {
         path: "survey/",
-        element: <Survey />,
+        element: <Survey dataProp="dataProp" />,
+      },
+      {
+        path: "routerDataPass/",
+        loader: async () => {
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=8e3f600b&s=terminator`
+          );
+          return await res.json();
+        },
+        element: <RouterDataPass />,
+      },
+      {
+        path: "routerDataPass/:movieName",
+        loader: async ({ params: { movieName } }) => {
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=8e3f600b&s=${movieName}`
+          );
+          return await res.json();
+        },
+        element: <RouterDataPass />,
       },
       {
         path: "survey/:id",

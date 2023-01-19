@@ -8,6 +8,9 @@ npm install react-icons --save = install icon react https://react-icons.github.i
 
 npm add styled-components = pour lier le css avec le js directement dans le fichier
 
+JEST
+npm test -- --coverage = to see the test coverage on the project
+
 ## Available Scripts
 
 In the project directory, you can run:

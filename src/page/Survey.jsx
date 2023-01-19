@@ -1,6 +1,5 @@
-import { useLocation, Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+/* import { useLocation, Link } from "react-router-dom"; */
+import { Component } from "react";
 
 import styled from "styled-components";
 import colors from "../utils/style/colors";
@@ -24,14 +23,13 @@ const Title = styled.h3`
   color: palevioletred;
 `;
 
-function Survey() {
+/* function Survey() {
   const { pathname } = useLocation();
-  const { number } = useParams();
   const [size, setSize] = useState(1);
   return (
     <div className="App">
       <div>
-        <h1>Mon questionnaire {number ? number : undefined}</h1>
+        <h1>Mon questionnaire </h1>
 
         <Link className="mx-4 nav-link-bar" to={`${pathname}/123`}>
           Faq
@@ -42,6 +40,46 @@ function Survey() {
       </div>
     </div>
   );
+} */
+
+// CREATE A COMPONENT WITH A CLASS
+
+class Survey extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: "",
+      size: 1,
+    };
+  }
+  updateInputValue(value) {
+    this.setState({ inputValue: value });
+  }
+  animBaloon(value) {
+    this.setState({ size: value + 0.1 });
+  }
+  render() {
+    const { dataProp } = this.props;
+    return (
+      <div className="App">
+        <div>
+          <h1>Mon questionnaire {dataProp} </h1>
+
+          <Title>style component</Title>
+          <Balloon
+            size={this.state.size}
+            onClick={() => this.animBaloon(this.state.size)}
+          />
+
+          <div>
+            {this.state.inputValue}
+            <input onChange={(e) => this.updateInputValue(e.target.value)} />
+          </div>
+          <QuestionForm />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Survey;

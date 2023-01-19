@@ -1,4 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+// NavLink = use to see the current link active contrairement a link
 import Badge from "react-bootstrap/Badge";
 
 import "../styles/layout.css";
@@ -16,15 +17,28 @@ function Layout() {
       <div className="App-banner">
         <img src={logo} alt="La maison jungle" className="lmj-logo" />
         <h1>La maison jungle</h1>
-        <Link className="mx-4 nav-link-bar" to="/">
+        <NavLink
+          to="/"
+          className="mx-4 nav-link-bar"
+          style={({ isActive }) => ({ color: isActive ? "red" : "black" })}
+        >
           Home
-        </Link>
-        <Link className="mx-4 nav-link-bar" to="/survey">
+        </NavLink>
+        <NavLink
+          to="/survey"
+          className="mx-4 nav-link-bar"
+          style={({ isActive }) => ({ color: isActive ? "red" : "black" })}
+        >
           survey
-        </Link>
-        <Link className="mx-4 nav-link-bar" to="/faq/123">
-          faq
-        </Link>
+        </NavLink>
+        <NavLink
+          to="/routerDataPass"
+          state={{ content: "my state content from the link" }}
+          className="mx-4 nav-link-bar"
+          style={({ isActive }) => ({ color: isActive ? "red" : "black" })}
+        >
+          RoutingTuto
+        </NavLink>
         <div>
           <MdOutlineShoppingCart className="shopcart-icon" />
           <Badge pill bg="warning">
