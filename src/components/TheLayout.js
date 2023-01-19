@@ -32,9 +32,8 @@ function Layout() {
           </Badge>
         </div>
       </div>
-
-      <Outlet />
-
+      <Outlet context={{ cartContext: { content: "my cart" } }} />{" "}
+      {/* WHERE WE WANT TO RENDER THE CONTENT OF THE PAGE === <NUXT /> dans layout */}
       <div className="App-footer">
         <h2>My footer</h2>
         <ul>

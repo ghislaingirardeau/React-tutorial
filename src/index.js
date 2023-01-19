@@ -15,8 +15,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <TheLayout />,
-    errorElement: <ErrorPage />,
+    element: <TheLayout />, // render the layout in every children route
+    errorElement: <ErrorPage />, // to add an error page
     children: [
       {
         path: "/",

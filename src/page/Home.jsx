@@ -4,11 +4,14 @@ import ShoppingList from "../components/ShoppingList";
 import Modal from "../components/Modal";
 
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 function App() {
   const [cart, updateCart] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState({}); // for the modal
+  const test = useOutletContext();
+  console.log(test);
 
   return (
     <div className="App">
